@@ -1,0 +1,58 @@
+:root {
+  --bg-tableHeader: rgb(140, 236, 196);
+}
+.search {
+  position: "relative" !important;
+  border: solid 1px var(--bg-tableHeader);
+  border-radius: 5px !important;
+  display: flex;
+  background-color: white !important;
+  align-items: "center" !important;
+  justify-content: "center" !important;
+  width: 100% !important;
+}
+.search:hover {
+  background-color: gainsboro !important;
+  border-color: gainsboro;
+}
+.search:hover .searchIcon {
+  color: rgb(10, 7, 7);
+}
+
+.searchIcon {
+  padding-top: 5px;
+  margin-left: 10px;
+  padding-left: 7px; /*transform: translateX(-3px);*/
+  padding-right: 7px;
+  pointer-events: "none" !important;
+  display: "flex" !important;
+  align-items: "center" !important;
+  justify-content: "center" !important;
+}
+.searchIcon:hover {
+  background-color: var(--bg-tableHeader);
+  padding-left: 7px;
+  padding-right: 7px;
+  border-radius: 19px;
+}
+.inputInput {
+  font-family: Spectral, Georgia, "Times New Roman", Times, serif !important;
+  padding: 10px !important;
+  color: rgb(10, 7, 7) !important;
+  font-size: 13px;
+}
+.inputRoot {
+  width: 90%;
+}
+
+.TableHead {
+  background-color: var(--bg-tableHeader);
+  text-align: left !important;
+}
+.MuiTableCell-alignRigh {
+  text-align: left !important;
+}
+.MuiPaginationItem-textPrimary.Mui-selected {
+  color: black !important;
+  background-color: var(--bg-tableHeader) !important;
+}

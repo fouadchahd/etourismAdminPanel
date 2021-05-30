@@ -98,7 +98,11 @@ html,
 .form-element {
   margin-bottom: 1rem;
 }
-
+.errorMsg {
+  color: crimson;
+  font-family: monospace;
+  text-align: center;
+}
 .forgot-password,
 .forgot-password a {
   text-align: right;

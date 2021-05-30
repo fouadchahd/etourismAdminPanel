@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 import service_env from "./__env.service";
 const API_URL = service_env.API_URL;
 const headers = service_env.JSON_HEADER;
@@ -29,6 +30,7 @@ export const login = async function(username, password) {
 
 export const logout = () => {
     localStorage.removeItem('user_id');
+    Cookies.remove("jwt_auth", { expires: 7, path: "/" });
     localStorage.removeItem("current_user");
   }
 export const updateCurrentUserInLocalStorage = (new_data)=>{

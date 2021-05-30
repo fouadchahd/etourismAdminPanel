@@ -6,19 +6,22 @@ import {SignIn,SignUp, Home, NotFound } from "./pages";
 import Main from './pages/Main';
 import Users from './components/Users';
 import { BrowserRouter } from 'react-router-dom';
-
+import{AuthProvider} from './context/AuthContext';
+import ProtectedRoute from './utils/ProtectedRoute';
 function App() {
   return (
-   <BrowserRouter basename="/">
-    <Switch>
-      <Route path="/login" exact component={SignIn} />
-      <Route path="/register" exact component={SignUp} />
-      <Route path="/" exact component={Main} />
-      <Route path="/users" component={Users} />
-      <Redirect from="/" to="/"></Redirect>
-      <Route component={NotFound} />
-    </Switch>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter basename="/">
+        <Switch>
+          <Route path="/login" exact component={SignIn} />
+          <Route path="/register" exact component={SignUp} />
+          <ProtectedRoute path="/" exact><Main></Main></ProtectedRoute>
+          <Route path="/users" component={Users} />
+          <Redirect to="/"></Redirect>
+          <Route component={NotFound} />
+        </Switch>
+        </BrowserRouter>
+    </AuthProvider>
     
   );
 }

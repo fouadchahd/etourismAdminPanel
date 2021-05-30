@@ -3,23 +3,25 @@ import { Grid, Hidden, makeStyles } from "@material-ui/core";
 import LeftNavBar from "../components/LeftNavBar";
 import { Route } from "react-router";
 import Users from "../components/Users";
-import Profil from "../components/Profil";
 import { BrowserRouter } from "react-router-dom";
+import Home from "../components/Home";
+import CreateLocation from "./CreateLocation";
 
 const useStyles = makeStyles((theme) => ({}));
 const Main = () => {
   return (
     <div style={{ overflowY: "hidden" }}>
-      <BrowserRouter basename="/admin">
+      <BrowserRouter basename="/">
         <Grid container>
-          <Hidden xsDown>
-            <Grid sm={4} md={3} lg={2} item>
+          <Hidden smDown>
+            <Grid sm={0} md={3} lg={2} xl={0} item>
               <LeftNavBar></LeftNavBar>
             </Grid>
           </Hidden>
-          <Grid xs={12} sm={8} md={9} lg={10} item>
-            <Route path="/users" component={Users} />
-            <Route path="/profil" component={Profil} />
+          <Grid xs={12} sm={12} md={9} lg={10} xl={12} item>
+            <Route path="/users" render={(props) => <Users {...props} />} />
+            <Route path="/profil" component={Home} />
+            <Route path="/locations" component={CreateLocation} />
           </Grid>
         </Grid>
       </BrowserRouter>

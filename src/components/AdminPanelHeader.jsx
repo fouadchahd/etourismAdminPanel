@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import "./components.styles/adminPanelHeader.css";
 import Badge from "@material-ui/core/Badge";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-
+import Cookies from "js-cookie";
 const StyledBadge = withStyles((theme) => ({
   badge: {
     backgroundColor: "#44b700",
@@ -35,6 +35,7 @@ const StyledBadge = withStyles((theme) => ({
     },
   },
 }))(Badge);
+
 const AdminPanelHeader = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -44,6 +45,7 @@ const AdminPanelHeader = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const jwt_auth = Cookies.getJSON("jwt_auth");
 
   return (
     <div>
@@ -95,14 +97,15 @@ const AdminPanelHeader = (props) => {
             </Menu>
             <div className="appBarAccountInfoText">
               <Tooltip
-                title={"mohammed taoufiq lahmidi"}
+                title={`${jwt_auth.data.firstName} ${jwt_auth.data.lastName}`}
                 placement="bottom-start"
               >
                 <span className="accountInfoName">
-                  mohammed taoufiq lahmidi
+                  {jwt_auth.data &&
+                    `${jwt_auth.data.firstName} ${jwt_auth.data.lastName}`}
                 </span>
               </Tooltip>
-              <span className="accountInfoPseudo">@pseudo</span>
+              <span className="accountInfoPseudo">@{jwt_auth.data.pseudo}</span>
             </div>
           </div>
         </Toolbar>
