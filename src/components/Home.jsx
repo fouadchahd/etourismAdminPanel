@@ -2,6 +2,7 @@ import { Grid, Paper } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import { getTouristCount } from "../services/users.service";
 import { getTypesCount } from "../services/typeOfAttractions.service";
+import { getPoiCount } from "../services/pois.service";
 import AdminPanelHeader from "./AdminPanelHeader";
 import ColoredCard from "./ColoredCard";
 import "./components.styles/dynamicSlider.css";
@@ -16,10 +17,10 @@ const unsplashPhotos = [
 
 const Home = (props) => {
   const [counts, setcounts] = useState({
-    tourists: 0,
-    posts: 120,
+    tourists: "--",
+    posts: "--",
     reviews: 1977,
-    types: 0,
+    types: "--",
   });
   useEffect(() => {
     const interval = setInterval(
@@ -36,8 +37,14 @@ const Home = (props) => {
   useEffect(async () => {
     var touristCount = await getTouristCount();
     var typesCount = await getTypesCount();
+    var postsCount = await getPoiCount();
     console.log("tourist count getted" + touristCount);
-    setcounts({ ...counts, tourists: touristCount, types: typesCount });
+    setcounts({
+      ...counts,
+      tourists: touristCount,
+      types: typesCount,
+      posts: postsCount,
+    });
   }, []);
   const [activePhoto, setActivePhoto] = useState(unsplashPhotos[0]);
   return (
@@ -76,25 +83,41 @@ const Home = (props) => {
           >
             <Grid item xs={12} sm={6} md>
               {" "}
-              <ColoredCard color="#17a2b8" number={counts.tourists}>
+              <ColoredCard
+                bgcolor="#dfe4ea"
+                color="#17a2b8"
+                number={counts.tourists}
+              >
                 Touristes
               </ColoredCard>
             </Grid>
             <Grid item xs={12} sm={6} md>
               {" "}
-              <ColoredCard color="#ffc107" number={counts.posts}>
+              <ColoredCard
+                bgcolor="#dfe4ea"
+                color="#ffc107"
+                number={counts.posts}
+              >
                 Posts
               </ColoredCard>
             </Grid>
             <Grid item xs={12} sm={6} md>
               {" "}
-              <ColoredCard color="#dc3545" number={counts.reviews}>
+              <ColoredCard
+                bgcolor="#dfe4ea"
+                color="#dc3545"
+                number={counts.reviews}
+              >
                 Commentaires
               </ColoredCard>
             </Grid>
             <Grid item xs={12} sm={6} md>
               {" "}
-              <ColoredCard color="#28a745" number={counts.types}>
+              <ColoredCard
+                bgcolor="#dfe4ea"
+                color="#28a745"
+                number={counts.types}
+              >
                 Types
               </ColoredCard>
             </Grid>

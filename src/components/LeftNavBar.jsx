@@ -1,6 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useLocation, NavLink } from "react-router-dom";
 import "./components.styles/leftNavBar.css";
 import _logo from "../asserts/tripadvisor-logo-transparent.png";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -10,15 +9,13 @@ import HomeIcon from "@material-ui/icons/Home";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 const NavItem = (props) => {
   const Icon = props.icon;
-  const { pathname, search } = useLocation();
-  console.log(pathname);
-  console.log("search location" + search);
+  const { pathname } = useLocation();
   return (
     <NavLink
       to={props.to}
       activeClassName="activeNavLinkItem"
       className="navLinkItem"
-      /*isActive={() => "/locations" == pathname}*/
+      isActive={() => props.to == pathname}
     >
       <div className="navLinkIcon">
         {" "}
@@ -38,7 +35,7 @@ const LeftNavBar = () => {
       </header>
       <nav className="navContent">
         <div>
-          <NavItem text="Accueil" to="/profil" icon={HomeIcon}></NavItem>
+          <NavItem text="Accueil" to="/" icon={HomeIcon}></NavItem>
           <NavItem text="Utilisateurs" to="/users" icon={GroupIcon}></NavItem>
           <NavItem
             text="Statistiques"

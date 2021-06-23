@@ -1,5 +1,4 @@
 import React from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -12,8 +11,7 @@ import "./components.styles/userTable.css";
 import { Avatar, Badge } from "@material-ui/core";
 const dataTable = ({ data }) => {
   const formatStingDate = (date) => {
-    var vdate = date.slice(0, 10);
-    return vdate;
+    return date.slice(0, 10);
   };
   return (
     <TableContainer component={Paper}>

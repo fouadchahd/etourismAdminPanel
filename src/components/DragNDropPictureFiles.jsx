@@ -1,11 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  CircularProgress,
-  Grid,
-  GridList,
-  Typography,
-} from "@material-ui/core";
-import { Button } from "@material-ui/core";
+import React, { useState } from "react";
+import { Button, Grid, GridList, Typography } from "@material-ui/core";
 import { useDropzone } from "react-dropzone";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 const thumbsContainer = {
@@ -60,7 +54,6 @@ const deleteImageBtn = {
 };
 const DragNDropPictureFiles = (props) => {
   const [files, setFiles] = useState(props.pictureFiles);
-  const [uploading, setuploading] = useState(false);
   const { getRootProps, getInputProps, open } = useDropzone({
     accept: "image/*",
     noClick: true,
@@ -86,12 +79,6 @@ const DragNDropPictureFiles = (props) => {
     },
   });
 
-  //useEffect();
-  /*() => () => {
-      // Make sure to revoke the data uris to avoid memory leaks
-      files.forEach((file) => URL.revokeObjectURL(file.preview));
-    },
-    [files]*/
   const deleteImg = (e, file) => {
     e.preventDefault();
     var array = [...files]; // make a separate copy of the array
@@ -119,55 +106,54 @@ const DragNDropPictureFiles = (props) => {
     </GridList>
   );
   return (
-    <>
-      <Grid container>
-        <Grid item sm={12}>
-          <div
+    <Grid container style={{ width: "100%" }}>
+      <Grid item sm={12}>
+        <div
+          style={{
+            minHeight: "250px",
+            backgroundColor: "#f5f6fa",
+            padding: "14px",
+          }}
+        >
+          <section
+            className="container"
             style={{
-              minHeight: "250px",
-              backgroundColor: "#f5f6fa",
-              padding: "14px",
+              marginTop: "60px",
             }}
           >
-            <section
-              className="container"
-              style={{
-                marginTop: "60px",
-              }}
-            >
-              <div className="dropzone" style={{ alignItems: alignImageBloc }}>
-                <div {...getRootProps()}>
-                  <input {...getInputProps()} />
-                  {files[0] ? (
-                    <aside style={{ ...thumbsContainer }}>{thumbs}</aside>
-                  ) : (
-                    <Grid
-                      container
-                      item
-                      direction="column"
-                      justify="center"
-                      alignItems="center"
+            <div className="dropzone" style={{ alignItems: alignImageBloc }}>
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                {files[0] ? (
+                  <aside style={{ ...thumbsContainer }}>{thumbs}</aside>
+                ) : (
+                  <Grid
+                    container
+                    item
+                    direction="column"
+                    justify="center"
+                    alignItems="center"
+                  >
+                    <Typography variant="h4">
+                      Faites glisser et déposez quelques images ici,
+                    </Typography>
+                    <Typography variant="body1" style={{ marginTop: "3px" }}>
+                      ou cliquez çi-dessous pour sélectionner des images !
+                    </Typography>
+                    <Button
+                      onClick={open}
+                      variant="outlined"
+                      style={{ borderColor: "teal", marginTop: "8px" }}
                     >
-                      <Typography variant="h4">
-                        Faites glisser et déposez quelques images ici,
+                      <Typography variant="body2">
+                        <font color="teal">Importer</font>
                       </Typography>
-                      <Typography variant="body1" style={{ marginTop: "3px" }}>
-                        ou cliquez çi-dessous pour sélectionner des images !
-                      </Typography>
-                      <Button
-                        onClick={open}
-                        variant="outlined"
-                        style={{ borderColor: "teal", marginTop: "8px" }}
-                      >
-                        <Typography variant="body2">
-                          <font color="teal">Importer</font>
-                        </Typography>
-                      </Button>
-                    </Grid>
-                  )}
-                </div>
+                    </Button>
+                  </Grid>
+                )}
               </div>
-              {/*<Button
+            </div>
+            {/*<Button
                 size="large"
                 color={uploading ? "default" : "primary"}
                 variant="contained"
@@ -179,11 +165,10 @@ const DragNDropPictureFiles = (props) => {
                   "Ajouter"
                 )}{" "}
                 </Button>*/}
-            </section>
-          </div>
-        </Grid>
+          </section>
+        </div>
       </Grid>
-    </>
+    </Grid>
   );
 };
 

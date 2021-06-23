@@ -8,5 +8,5 @@ export const getAllTypes = async()=>{
 }
 
 export const getTypesCount = async()=>{
-    return await axios.get(API_URL+`type_of_attractions.jsonld?exists[parentType]=true`).then(({data}) => data["hydra:totalItems"]).catch(()=>{return 0 ;});
+    return  axios.get(API_URL+`type_of_attractions.jsonld?exists[parentType]=true`).then(({data}) => data["hydra:totalItems"]).catch(()=>{return 0 ;});
 }

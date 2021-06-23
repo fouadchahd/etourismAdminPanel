@@ -5,8 +5,7 @@ export default {
         'Accept': 'application/ld+json'
       },
     "JSON_HEADER" : {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
     },
-
 }

@@ -5,7 +5,7 @@ import Menu from "@material-ui/core/Menu";
 import Typography from "@material-ui/core/Typography";
 import "./components.styles/adminPanelHeader.css";
 import Badge from "@material-ui/core/Badge";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Cookies from "js-cookie";
 const StyledBadge = withStyles((theme) => ({
   badge: {

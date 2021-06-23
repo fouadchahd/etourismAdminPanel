@@ -45,7 +45,7 @@ const Maps2 = (props) => {
       latitude: e.latLng.lat(),
       longitude: e.latLng.lng(),
       city: {
-        id: 1,
+        id: 4,
       },
     });
     Geocode.fromLatLng(e.latLng.lat(), e.latLng.lng())

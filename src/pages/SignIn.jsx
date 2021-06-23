@@ -4,7 +4,6 @@ import { login } from "../services/register.service";
 import "../App.css";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
-//import Alert from "@material-ui/lab/Alert";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
@@ -23,7 +22,6 @@ const SignIn = (props) => {
   const history = useHistory();
   const [snackBarState, setsnackBarState] = useState(false);
   const [error, setError] = useState(null);
-  const [user, setUser] = useState({});
   const [showPassword, setshowPassword] = useState(false);
   const [state, setstate] = useState(
     location.state && location.state.email && location.state.password
@@ -46,15 +44,15 @@ const SignIn = (props) => {
         } else {
           console.log("ROLE Admin");
           localStorage.setItem("jwt_auth", JSON.stringify(data));
-          Cookies.set("jwt_auth", data, { expires: 7, path: "/" });
+          Cookies.set("jwt_auth", data, { expires: 1, path: "/" });
           console.log("hi there form here", data);
           setAuthToken(data);
           history.push("/");
         }
         setsnackBarState(true);
       })
-      .catch(function (error) {
-        if (error.response && error.response.data.code == 401) {
+      .catch(function (err) {
+        if (err.response && err.response.data.code === 401) {
           setError("Veuillez entrer des données valides");
         }
         setisLoading(false);

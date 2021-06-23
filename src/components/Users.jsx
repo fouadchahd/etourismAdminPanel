@@ -12,12 +12,8 @@ import SearchIcon from "@material-ui/icons/Search";
 import "./components.styles/userTable.css";
 
 import {
-  getAdmins,
-  getToken,
-  getUsers,
   getTourists,
   getUsersByPseudo,
-  getTouristCount,
   getUsersCount,
 } from "../services/users.service";
 import UsersTable from "./UsersTable";
