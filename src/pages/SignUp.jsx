@@ -74,7 +74,7 @@ const SignUp = () => {
 
   const theme = createMuiTheme({
     palette: {
-      primary: { main: "#3d4b57" },
+      primary: { main: "#A8FF78" },
     },
   });
   return (

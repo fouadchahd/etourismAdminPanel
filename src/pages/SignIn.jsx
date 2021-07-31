@@ -73,7 +73,7 @@ const SignIn = (props) => {
   };
   const theme = createMuiTheme({
     palette: {
-      primary: { main: "#3d4b57" },
+      primary: { main: "#A8FF78" },
     },
   });
   if (authToken) return <Redirect to="/"></Redirect>;
